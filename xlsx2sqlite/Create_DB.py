@@ -1,6 +1,6 @@
 import sqlite3
 
-def createDataBase:
+def createDataBase():
 	ess=sqlite3.connect('ess.db')
 	ess.execute('''CREATE TABLE IF NOT EXISTS ALL_ESS 
 	(PLANT TEXT,
@@ -16,7 +16,7 @@ def createDataBase:
 	ACCEPTANCE_TIME TEXT,
 	OFFICER_ACCEPTANCE_TIME TEXT,
 	EXECUTOR_NUMBER TEXT,
-	EXECUTOR_NUMBER TEXT,
+	EXECUTOR TEXT,
 	ASSIGN_PIC_PLANT TEXT,
 	COMPLETION_DATA TEXT,
 	EXECUTOR_DEPARTMENT TEXT,
@@ -42,5 +42,7 @@ def createDataBase:
 	FOUNDER TEXT,
 	ITEM_TYPE TEXT,
 	PATH TEXT,
-	DATA TEXT,
-	);''')
+	DATA TEXT);''')
+	
+if __name__=='__main__':
+	createDataBase()
