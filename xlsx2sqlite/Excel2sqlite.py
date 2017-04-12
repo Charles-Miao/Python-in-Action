@@ -2,6 +2,7 @@ import sqlite3
 import xlrd
 import xlwt
 import os
+from datetime import date,datetime
 
 def createDataBase(cn):
 	ess=sqlite3.connect(cn)
@@ -61,6 +62,10 @@ def readExcel(filename,cn):
 		for j in range(0,sheet.ncols):
 			if sheet.cell(i,j).value=='':
 				temp.append(None)
+			elif sheet.cell(i,j).ctype==3:
+				date_value = xlrd.xldate_as_tuple(sheet.cell_value(i,j),workbook.datemode)
+				date_tmp = date(*date_value[:3]).strftime('%Y-%m-%d')
+				temp.append(date_tmp)
 			else:
 				temp.append(sheet.cell(i,j).value)
 		
