@@ -1,7 +1,29 @@
+Excel to SQLite
+===
+模块一
+---
+[**Excel2SQLite.py**](https://github.com/Charles-Miao/SimpleScript-Python/tree/master/xlsx2sqlite/Excel2sqlite.py)
+
+- createDataBase，创建DB Table（用于存储所有提案）
+- createProposalTable，创建Table（用于存储提案部门为MEZ900的提案）
+- createExecutorTable，创建Table（用于存储被提案部门为MEZ900的提案）
+- readExcel，读取Excel的数据，并存入SQLite DB，若Excel值为空，则赋值为None，若Excel值为日期值，则转换格式再存储，注意事项，SQLite插入语句
+
+模块二
+---
+[**SQLite2Excel.py**](https://github.com/Charles-Miao/SimpleScript-Python/tree/master/xlsx2sqlite/SQLite2Excel.py)
+
+- createExcel，创建xls格式的EXCEL文件
+- insertExcel，插入Excel表头
+- 功能1：本月提案，并被厂长Approve（筛选DB，并插入Excel，需要转换日期格式以便判断）
+- 功能2：本月有节省人力的提案（筛选DB，并插入Excel，需要转换日期格式以便判断）
+- 功能3：正在进行中的提案（筛选DB，并插入Excel）
+- 功能4：结案嘉奖提案（筛选DB，并插入Excel）
+- 功能5：提案嘉奖提案（筛选DB，并插入Excel）
 
 注意事项
 ---
-- **Excel2SQLite.py**, insert语句变量需要使用**"?"**代替
+- insert语句变量需要使用**"?"**代替
 
 参考
 ---
