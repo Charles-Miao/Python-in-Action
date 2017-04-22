@@ -2,7 +2,7 @@ Excel to SQLite
 ===
 模块一
 ---
-[**Excel2SQLite.py**](https://github.com/Charles-Miao/SimpleScript-Python/tree/master/xlsx2sqlite/Excel2sqlite.py)
+[**Excel2SQLite.py**](https://github.com/Charles-Miao/SimpleScript-Python/tree/master/excel2sqlite/Excel2sqlite.py)
 
 - createDataBase，创建DB Table（用于存储所有提案）
 - createProposalTable，创建Table（用于存储提案部门为MEZ900的提案）
@@ -11,7 +11,7 @@ Excel to SQLite
 
 模块二
 ---
-[**SQLite2Excel.py**](https://github.com/Charles-Miao/SimpleScript-Python/tree/master/xlsx2sqlite/SQLite2Excel.py)
+[**SQLite2Excel.py**](https://github.com/Charles-Miao/SimpleScript-Python/tree/master/excel2sqlite/SQLite2Excel.py)
 
 - createExcel，创建xls格式的EXCEL文件
 - insertExcel，插入Excel表头
