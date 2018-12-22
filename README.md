@@ -19,3 +19,12 @@ OfficeScan
 
 **officescan**，从产线online电脑中挑选出未安装officescan的电脑
 
+
+SFCS Web Service
+---
+
+- 上抛SFCS可以使用zeep模块或者urllib模块，但是zeep模块更好用
+
+- JSON数据交互格式比XML更好用
+
+- 上抛NG时，修护需要定义ErrorCode和NG流程
