@@ -46,3 +46,13 @@
 
 - 使用pandas模块筛选Excel
 - 使用pptx模块自动生成pptx
+
+2020
+---
+
+[CheckComputer](https://github.com/Charles-Miao/Python-in-Action/tree/master/CheckComputer)，用python重构，主要可以实现如下功能：
+---
+
+- 检查电脑是否激活，若没有激活则自己激活一遍，并显示异常
+- 检查电脑officescan病毒码版本是否和服务器类似，若不相同，则显示异常
+- tool可以最小化到桌面右下角
