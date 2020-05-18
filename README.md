@@ -56,3 +56,8 @@
 - 检查电脑是否激活，若没有激活则自己激活一遍，并显示异常
 - 检查电脑officescan病毒码版本是否和服务器类似，若不相同，则显示异常
 - tool可以最小化到桌面右下角
+
+[filt_compress_log](https://github.com/Charles-Miao/Python-in-Action/tree/master/filt_compress_log)，用于筛选和压缩文本log：
+---
+
+- 将文本放到以修改日期为目录的文件内，并将此文件夹进行压缩
