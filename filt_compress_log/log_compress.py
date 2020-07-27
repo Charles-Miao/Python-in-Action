@@ -4,8 +4,7 @@ import re
 import zipfile
 from multiprocessing import Pool
 
-def compress(target,source):
-    sz=r"C:\Users\Charles\Desktop\7z1900-extra\7za.exe"
+def compress(sz,target,source):
     os.system("%s a -t7z %s %s -r -mx=5 -m0=LZMA2 -ms=10m -mf=on -mhc=on -mmt=on" % (sz,target,source))
 
 def get_CPU_NumberOfCores():
@@ -23,7 +22,8 @@ def get_CPU_NumberOfCores():
 if __name__ == "__main__":
     target_folder=r"C:\Users\Charles\Desktop\temp"
     z_target_folder=r"C:\Users\Charles\Desktop\TE_Test_Data"
-    
+    sz=r"C:\Users\Charles\Desktop\7z1900-extra\7za.exe"
+
     core=int(get_CPU_NumberOfCores())
     folder_list=os.listdir(target_folder)
 
@@ -31,7 +31,7 @@ if __name__ == "__main__":
     for folder in folder_list:
         target=os.path.join(z_target_folder, folder+'.7z')
         source=os.path.join(target_folder, folder+'\\*') 
-        p.apply_async(compress, args=(target,source,))
+        p.apply_async(compress, args=(sz,target,source,))
     p.close()
     p.join()
     print('All subprocesses done.')
