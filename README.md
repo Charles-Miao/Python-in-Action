@@ -62,3 +62,8 @@
 
 - 将文本放到以修改日期为目录的文件内，并将此文件夹进行压缩
 - 第二版使用多进程作业，加快了处理速度
+
+[UI_log](https://github.com/Charles-Miao/Python-in-Action/tree/master/UI_log)
+---
+
+- 透过ui log获取每个机台的测试时间
