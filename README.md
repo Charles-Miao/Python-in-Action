@@ -67,3 +67,14 @@
 ---
 
 - 透过ui log获取每个机台的测试时间
+
+2021
+---
+
+[fixture_utilization](https://github.com/Charles-Miao/Python-in-Action/tree/master/fixture_utilization)，用于计算RF设备稼动率
+---
+- 綫體（同一個儀器，count最多的綫體名）
+- 站別（同一個儀器，count最多的站別名）
+- 平均時間（時間排序，逐一遞減，剔除最大和最小的20%的數據，中間數值取平均）
+- 上抛數量（同一個儀器，count所有上抛數據）
+- 稼動率（最大的時間-最小的時間）/24hour
