@@ -65,9 +65,9 @@
 - 检查电脑officescan病毒码版本是否和服务器类似，若不相同，则显示异常
 - tool可以最小化到桌面右下角
 
-[filt_compress_log](https://github.com/Charles-Miao/Python-in-Action/tree/master/filt_compress_log)，用于筛选和压缩文本log：
+[filt_compress_log](https://github.com/Charles-Miao/Python-in-Action/tree/master/filt_compress_log)
 ---
-
+- 用途：用于筛选和压缩文本log
 - 将文本放到以修改日期为目录的文件内，并将此文件夹进行压缩
 - 第二版使用多进程作业，加快了处理速度
 
