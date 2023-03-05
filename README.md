@@ -19,15 +19,15 @@
 
 [AIS_Backup_Result](https://github.com/Charles-Miao/Python-in-Action/tree/master/AIS_Backup_Result)
 ---
-- 将AIS备份的log汇总成新的txt文本，并用mail发给AFTE，以方便了解产线程式同步的状况
+- 用途：将AIS备份的log汇总成新的txt文本，并用mail发给AFTE，以方便了解产线程式同步的状况
 
 [PRS_Monitor](https://github.com/Charles-Miao/Python-in-Action/tree/master/PRS_Monitor)
 ---
-- 将PRS视频文件的最新数据整理正csv文件，方便UI PATH处理原始数据
+- 用途：将PRS视频文件的最新数据整理正csv文件，方便UI PATH处理原始数据
 
 [SVN_weekly_report](https://github.com/Charles-Miao/Python-in-Action/tree/master/SVN_weekly_report)
 ---
-- 将SVN的log汇总成EXCEL文件，方便UI PATH定期发送邮件和展示SVN修改纪录
+- 用途：将SVN的log汇总成EXCEL文件，方便UI PATH定期发送邮件和展示SVN修改纪录
 
 [Wallaby_Download_Fail_Monitor](https://github.com/Charles-Miao/Python-in-Action/tree/master/Wallaby_Download_Fail_Monitor)
 ---
@@ -45,10 +45,11 @@
 
 [rsync](https://github.com/Charles-Miao/Python-in-Action/tree/master/rsync)
 ---
-- 透过python脚本实现sersync功能，将Windows中测试log实时同步到NAS Server中，详细说明参见博客文章：[Windows实时同步文件至NAS](https://charles-miao.github.io/post/windows-rsync-realtime/)
+- 用途：透过python脚本实现sersync功能，将Windows中测试log实时同步到NAS Server中，详细说明参见博客文章：[Windows实时同步文件至NAS](https://charles-miao.github.io/post/windows-rsync-realtime/)
 
-[fixture_utilization](https://github.com/Charles-Miao/Python-in-Action/tree/master/fixture_utilization)，用于计算RF设备稼动率
+[fixture_utilization](https://github.com/Charles-Miao/Python-in-Action/tree/master/fixture_utilization)
 ---
+- 用途：用于计算RF设备稼动率
 - 綫體（同一個儀器，count最多的綫體名）
 - 站別（同一個儀器，count最多的站別名）
 - 平均時間（時間排序，逐一遞減，剔除最大和最小的20%的數據，中間數值取平均）
@@ -57,9 +58,9 @@
 2020
 ---
 
-[CheckComputer](https://github.com/Charles-Miao/Python-in-Action/tree/master/CheckComputer)，用python重构，主要可以实现如下功能：
+[CheckComputer](https://github.com/Charles-Miao/Python-in-Action/tree/master/CheckComputer)
 ---
-
+- 用途：用python重构，检查电脑激活和officescan状态
 - 检查电脑是否激活，若没有激活则自己激活一遍，并显示异常
 - 检查电脑officescan病毒码版本是否和服务器类似，若不相同，则显示异常
 - tool可以最小化到桌面右下角
@@ -73,50 +74,47 @@
 [UI_log](https://github.com/Charles-Miao/Python-in-Action/tree/master/UI_log)
 ---
 
-- 透过ui log获取每个机台的测试时间
+- 用途：透过ui log获取每个机台的测试时间
 
 2019
 ---
 
-[Lean_Report_Auto](https://github.com/Charles-Miao/Python-in-Action/tree/master/Lean_Report_Auto),重构了自动生成lean report的脚本
+[Lean_Report_Auto](https://github.com/Charles-Miao/Python-in-Action/tree/master/Lean_Report_Auto)
 ---
-
+- 用途：重构了自动生成lean report的脚本
 - 使用pandas模块筛选Excel
 - 使用pptx模块自动生成pptx
 
 2018
 ---
 
-[OfficeScan](https://github.com/Charles-Miao/Python-in-Action/tree/master/OfficeScan)，筛选excel数据
+[OfficeScan](https://github.com/Charles-Miao/Python-in-Action/tree/master/OfficeScan)
 ---
+- 用途：筛选excel数据
+- officescan，从产线online电脑中挑选出未安装officescan的电脑
 
-- **officescan**，从产线online电脑中挑选出未安装officescan的电脑
 
-
-[SFCS Web Service](https://github.com/Charles-Miao/Python-in-Action/tree/master/WistronSFCS)，上抛SFCS
+[SFCS Web Service](https://github.com/Charles-Miao/Python-in-Action/tree/master/WistronSFCS)
 ---
-
+- 用途：用于和SFCS沟通
 - 上抛SFCS可以使用zeep模块或者urllib模块，但是zeep模块更好用
-
 - JSON数据交互格式比XML更好用
-
 - 上抛NG时，修护需要定义ErrorCode和NG流程
 
 2017
 ---
 
-[txt2excel](https://github.com/Charles-Miao/Python-in-Action/tree/master/txt2excel)，将txt log整理至excel中
+[txt2excel](https://github.com/Charles-Miao/Python-in-Action/tree/master/txt2excel)
 ---
-
-- **handle_P_sensor_Log**，将p-sensor txt log整理转化为excel文件
-
-- **handle_Asimov_test_log**，将Asimov测试log整理为excel
+- 用途：将txt log整理至excel中
+- handle_P_sensor_Log，将p-sensor txt log整理转化为excel文件
+- handle_Asimov_test_log，将Asimov测试log整理为excel
 
 2016
 ---
 
-[excel2sqlite](https://github.com/Charles-Miao/Python-in-Action/tree/master/excel2sqlite)，简化提案改善步骤
+[excel2sqlite](https://github.com/Charles-Miao/Python-in-Action/tree/master/excel2sqlite)
 ---
-
-- **Excel2sqlite**，将提案改善excel数据导入sqlite中
-- **SQLite2Excel**，将提案改善sqlite中的数据筛选并整理成excel文件
+- 用途：简化提案改善步骤
+- Excel2sqlite，将提案改善excel数据导入sqlite中
+- SQLite2Excel，将提案改善sqlite中的数据筛选并整理成excel文件
