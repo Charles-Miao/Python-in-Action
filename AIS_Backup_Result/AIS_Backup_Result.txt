@@ -1,0 +1,6 @@
+copy files is OK,	2023-03-04 09:00:01,	HA10 Arashi-Terminal_LogFile.log
+copy files is OK,	2023-03-04 09:00:02,	HA19 QA210_LogFile.log
+copy files is OK,	2023-03-04 09:00:06,	HA22D QA200 CSD LB=X_LogFile.log
+copy files is OK,	2023-03-04 09:00:01,	HA22D QA210 CSD LB=X_LogFile.log
+copy files is OK,	2023-03-04 09:00:10,	HA22D QA210 CSD LT=B_LogFile.log
+copy files is OK,	2023-03-04 09:00:02,	HA22D QP200 CSD LT=B_LogFile.log

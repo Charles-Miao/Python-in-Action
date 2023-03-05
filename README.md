@@ -1,52 +1,59 @@
 简单Python脚本收集
 ===
 
-2016
+2023
 ---
 
-[excel2sqlite](https://github.com/Charles-Miao/Python-in-Action/tree/master/excel2sqlite)，简化提案改善步骤
+[CRL]()
+---
+- GetCRL，获取CRL文件，并将其上传到FTP上
+- revoke_file，讀取需要注銷的SN信息，並透過API查詢CASN，最終將查詢的結果，以及revoke结果写入CSV文件
+
+[get_CRL]()
+---
+- get_CRL，将CRL文件上传到FTP中，并发送邮件
+- get_revoke_file，确认FTP文件中是否有需要revoke的文件，如果有则下载下来
+
+2022
 ---
 
-- **Excel2sqlite**，将提案改善excel数据导入sqlite中
-- **SQLite2Excel**，将提案改善sqlite中的数据筛选并整理成excel文件
+[AIS_Backup_Result]()
+---
+- 将AIS备份的log汇总成新的txt文本，并用mail发给AFTE，以方便了解产线程式同步的状况
 
-2017
+[PRS_Monitor]()
+---
+- 将PRS视频文件的最新数据整理正csv文件，方便UI PATH处理原始数据
+
+[SVN_weekly_report]()
+---
+- 将SVN的log汇总成EXCEL文件，方便UI PATH定期发送邮件和展示SVN修改纪录
+
+[Wallaby_Download_Fail_Monitor]()
+---
+- 用途：将wallaby测试生成的UI log中download fail的信息整理成CSV文件，并发送给RPA开发者，以便RPA整理成图表
+- 优缺点：UI Path不适用处理小文件，故先使用python脚本先对log做个汇总，最后由UI Path做个展示
+
+2021
 ---
 
-[txt2excel](https://github.com/Charles-Miao/Python-in-Action/tree/master/txt2excel)，将txt log整理至excel中
+[Auto_FTP]()
 ---
+- 用途：将QCN文件上传到FTP中，同时纪录传输log，方便查询
+- 优缺点：商用软件可以实现断点续传，但是没有一个好的log，这个脚本无法实现断点续传，传输小文件很不方便，断了需要重新运行
+- 使用方法：先用商用软件完整传输一次，最后再用这个脚本运行纪录log
 
-- **handle_P_sensor_Log**，将p-sensor txt log整理转化为excel文件
-
-- **handle_Asimov_test_log**，将Asimov测试log整理为excel
-
-2018
+[rsync]()
 ---
+- 透过python脚本实现sersync功能，将Windows中测试log实时同步到NAS Server中，详细说明参见博客文章：[Windows实时同步文件至NAS](https://charles-miao.github.io/post/windows-rsync-realtime/)
 
-[OfficeScan](https://github.com/Charles-Miao/Python-in-Action/tree/master/OfficeScan)，筛选excel数据
+[fixture_utilization](https://github.com/Charles-Miao/Python-in-Action/tree/master/fixture_utilization)，用于计算RF设备稼动率
 ---
-
-- **officescan**，从产线online电脑中挑选出未安装officescan的电脑
-
-
-[SFCS Web Service](https://github.com/Charles-Miao/Python-in-Action/tree/master/WistronSFCS)，上抛SFCS
----
-
-- 上抛SFCS可以使用zeep模块或者urllib模块，但是zeep模块更好用
-
-- JSON数据交互格式比XML更好用
-
-- 上抛NG时，修护需要定义ErrorCode和NG流程
-
-2019
----
-
-[Lean_Report_Auto](https://github.com/Charles-Miao/Python-in-Action/tree/master/Lean_Report_Auto),重构了自动生成lean report的脚本
----
-
-- 使用pandas模块筛选Excel
-- 使用pptx模块自动生成pptx
-
+- 綫體（同一個儀器，count最多的綫體名）
+- 站別（同一個儀器，count最多的站別名）
+- 平均時間（時間排序，逐一遞減，剔除最大和最小的20%的數據，中間數值取平均）
+- 上抛數量（同一個儀器，count所有上抛數據）
+- 稼動率（最大的時間-最小的時間）/24hour
 2020
 ---
 
@@ -68,13 +75,48 @@
 
 - 透过ui log获取每个机台的测试时间
 
-2021
+2019
 ---
 
-[fixture_utilization](https://github.com/Charles-Miao/Python-in-Action/tree/master/fixture_utilization)，用于计算RF设备稼动率
+[Lean_Report_Auto](https://github.com/Charles-Miao/Python-in-Action/tree/master/Lean_Report_Auto),重构了自动生成lean report的脚本
 ---
-- 綫體（同一個儀器，count最多的綫體名）
-- 站別（同一個儀器，count最多的站別名）
-- 平均時間（時間排序，逐一遞減，剔除最大和最小的20%的數據，中間數值取平均）
-- 上抛數量（同一個儀器，count所有上抛數據）
-- 稼動率（最大的時間-最小的時間）/24hour
+
+- 使用pandas模块筛选Excel
+- 使用pptx模块自动生成pptx
+
+2018
+---
+
+[OfficeScan](https://github.com/Charles-Miao/Python-in-Action/tree/master/OfficeScan)，筛选excel数据
+---
+
+- **officescan**，从产线online电脑中挑选出未安装officescan的电脑
+
+
+[SFCS Web Service](https://github.com/Charles-Miao/Python-in-Action/tree/master/WistronSFCS)，上抛SFCS
+---
+
+- 上抛SFCS可以使用zeep模块或者urllib模块，但是zeep模块更好用
+
+- JSON数据交互格式比XML更好用
+
+- 上抛NG时，修护需要定义ErrorCode和NG流程
+
+2017
+---
+
+[txt2excel](https://github.com/Charles-Miao/Python-in-Action/tree/master/txt2excel)，将txt log整理至excel中
+---
+
+- **handle_P_sensor_Log**，将p-sensor txt log整理转化为excel文件
+
+- **handle_Asimov_test_log**，将Asimov测试log整理为excel
+
+2016
+---
+
+[excel2sqlite](https://github.com/Charles-Miao/Python-in-Action/tree/master/excel2sqlite)，简化提案改善步骤
+---
+
+- **Excel2sqlite**，将提案改善excel数据导入sqlite中
+- **SQLite2Excel**，将提案改善sqlite中的数据筛选并整理成excel文件
