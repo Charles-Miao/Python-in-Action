@@ -1,6 +1,44 @@
 简单Python脚本收集
 ===
 
+2025
+---
+
+[Zabbix_Agent](https://github.com/Charles-Miao/Python-in-Action/tree/master/Zabbix_Agent)
+
+- 使用[syncFileServer](https://github.com/Charles-Miao/Batch-in-Action/tree/master/2025/syncFileServer)中的批处理脚本，同步文件服务器上的文件到备份服务器
+- 使用[Zabbix_Agent](https://github.com/Charles-Miao/Python-in-Action/tree/master/Zabbix_Agent)中的python脚本和Zabbix工具，监控同步结果
+- IT监控平台Zabbix添加Sync Files模板，此模板添加了一个Sync Files监控项，以及一个触发器（同步失败则触发）
+- 主机JS2P-FS-SRV01，添加Sync Files模板
+- IT维护Email媒介：SMTP服务器和发送邮件的电子邮件
+- IT添加SWDL群组和用户，并添加Email报警媒介
+- 添加一个触发器动作，当文件同步异常时透过Email发送给SWDL群组
+
+```mermaid
+flowchart TD
+    subgraph 同步与监控流程
+        A[文件服务器] -->|syncFileServer批处理脚本| B[备份服务器]
+        B --> C{Zabbix Agent执行Check_Sync.py}
+    end
+
+    subgraph Zabbix平台配置
+        D[添加Sync Files模板] --> E[创建监控项: sync.result]
+        E --> F[设置触发器: 同步失败时触发]
+        G[文件服务器JS2P-FS-SRV01应用模板] --> H[IT维护Email媒介：SMTP服务器和发送邮件的电子邮件]
+        H --> I[IT添加SWDL群组和用户，并添加Email报警媒介]
+        I --> J[添加一个触发器动作，当文件同步异常时透过Email发送给SWDL群组]
+        F --> K{触发条件满足?}
+    end
+
+    subgraph 报警处理
+        K -->|是| L[发送报警邮件给指定用户]
+        K -->|否| M[持续监控]
+    end
+
+    C -->|上报监控数据| E
+    F --> K
+```
+
 2024
 ---
 
