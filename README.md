@@ -4,6 +4,11 @@
 2025
 ---
 
+[Remote](https://github.com/Charles-Miao/Python-in-Action/tree/master/remote)
+
+- Author: David Ge
+- This was designed for remote server to execute command and get result.
+
 [Zabbix_Agent](https://github.com/Charles-Miao/Python-in-Action/tree/master/Zabbix_Agent)
 
 - 使用[syncFileServer](https://github.com/Charles-Miao/Batch-in-Action/tree/master/2025/syncFileServer)中的批处理脚本，同步文件服务器上的文件到备份服务器
