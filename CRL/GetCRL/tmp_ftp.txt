@@ -1,5 +1,0 @@
-open 192.168.123.71
-crl
-crl
-put LVR5-crl.crl
-bye

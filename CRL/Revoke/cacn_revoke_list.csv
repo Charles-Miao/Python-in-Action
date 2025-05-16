@@ -1,3 +1,0 @@
-sn,CASN,revoke_reason,post,response
-406388710001,24,1,"{""Serial"":""24"",""Reason"":1}","{""ErrorCode"":""902300"",""ErrorMessage"":""certificate already revoked at 2023/03/05 12:13:23 +0800""}"
-406388710002,25,1,"{""Serial"":""25"",""Reason"":1}","{""ErrorCode"":""902300"",""ErrorMessage"":""certificate already revoked at 2023/03/03 11:10:26 +0800""}"
