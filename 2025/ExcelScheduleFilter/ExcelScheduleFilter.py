@@ -18,12 +18,41 @@ HIGH_RED_B = 128
 
 
 def float_to_datetime(excel_float):
+    """
+    将Excel日期浮点数转换为datetime对象。
+
+    Args:
+        excel_float (float): Excel日期浮点数，表示从1899年12月30日起的天数。
+
+    Returns:
+        datetime: 转换后的datetime对象。
+
+    """
     base_date = datetime(1899, 12, 30)
     return base_date + timedelta(days=excel_float)
 
 
 def is_redish(color_obj):
-    """检查颜色是否为红色系（支持处理带alpha通道的格式）"""
+    """
+    判断颜色对象是否为红色系。
+
+    Args:
+        color_obj (Union[str, Color]): 颜色对象，支持字符串格式和颜色类对象。
+
+    Returns:
+        bool: 如果是红色系则返回True，否则返回False。
+
+    Raises:
+        None
+
+    备注：
+        支持处理带alpha通道的颜色格式。
+        1. Alpha通道表示颜色的透明度，数值范围通常为00（完全透明）到FF（完全不透明）。例如：
+        #FFAABBCC：前两位FF为Alpha通道，后六位AABBCC为RGB值。
+        #AABBCC：不包含Alpha通道，仅RGB。
+        2. 为何需要去除Alpha通道
+        在代码的is_redish函数中，判断颜色是否为红色系时，透明度信息无关紧要。若保留Alpha通道可能导致误判（例如#FFAABBCC和#AABBCC实际RGB值相同，但直接比较会因Alpha差异导致结果不同）。
+    """
     if not color_obj:
         return False
     try:
@@ -52,6 +81,25 @@ def is_redish(color_obj):
 
 
 def extract_sixth_row(file_path, start_date, end_date):
+    """
+    从Excel文件中提取第六行，并根据指定的日期范围过滤结果。
+
+    Args:
+        file_path (str): Excel文件的路径。
+        start_date (datetime): 日期范围的开始日期。
+        end_date (datetime): 日期范围的结束日期。
+
+    Returns:
+        tuple: 返回一个包含两个元素的元组。
+            - filtered_row (list): 过滤后的第六行数据。
+            - rows_with_target_content (list): 包含目标内容的行列表。
+
+    Raises:
+        FileNotFoundError: 如果指定的文件不存在，则引发此异常。
+        KeyError: 如果工作表“生产排程”不存在，则引发此异常。
+        Exception: 如果发生其他未知错误，则引发此异常。
+
+    """
     try:
         workbook = load_workbook(file_path,data_only=True)
         sheet = workbook['生产排程']
@@ -129,6 +177,28 @@ def select_file():
 
 
 def process_file():
+    """
+    处理文件函数。
+
+    Args:
+        无
+
+    Returns:
+        无
+
+    Raises:
+        无
+
+    该函数首先通过图形界面获取文件路径、开始日期和结束日期。
+    如果未选择文件，将弹出警告提示用户选择文件。
+    如果未输入开始日期或结束日期，将弹出警告提示用户输入日期。
+    然后，将输入的日期字符串转换为 datetime 对象，并检查日期格式是否正确。
+    如果日期格式不正确，将弹出错误提示用户输入正确的日期格式（YYYY-MM-DD）。
+    如果开始日期晚于结束日期，将弹出错误提示用户更正日期。
+    接着，调用 extract_sixth_row 函数提取指定日期范围内的数据，并返回过滤后的日期和包含目标内容的行。
+    如果提取到数据，将打印过滤后的日期和包含目标内容的行，并将数据保存为 Excel 文件。
+    最后，弹出信息框提示用户筛选结果已保存。
+    """
     file_path = entry.get()
     if not file_path:
         messagebox.showwarning("警告", "请先选择文件")

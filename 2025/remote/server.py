@@ -40,6 +40,10 @@ root = tk.Tk()
 root.title("远程控制ESOP电脑")
 root.geometry("1000x600")
 
+# 创建Canvas并放置左侧，填满窗口可扩展区域
+# 创建垂直滚动条关联Canvas的y轴滚动
+# 通过相互绑定yscrollcommand/yview实现滚动同步
+# 滚动条自动显示/隐藏，Canvas内容超出时可上下滚动
 canvas = tk.Canvas(root)
 canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 scrollbar = tk.Scrollbar(root, orient=tk.VERTICAL, command=canvas.yview)
@@ -49,6 +53,11 @@ canvas.config(yscrollcommand=scrollbar.set)
 frame = tk.Frame(canvas)
 canvas.create_window((0, 0), window=frame, anchor=tk.NW)
 
+# 从配置文件中读取所有section（如[Group1]、[Group2]等）
+# 为每个section创建两个列表：
+# computers列表存储section下的所有键（计算机名）
+# checkbox_vars列表存储对应数量的tk.IntVar()变量（用于复选框状态绑定）
+# 将各section的数据分别存入all_computers和all_checkbox_vars两个字典中，结构为{section: [项列表]}。
 all_computers = {}
 all_checkbox_vars = {}
 for section in config.sections():
@@ -92,7 +101,7 @@ def execute_command():
         for i, var in enumerate(checkbox_vars):
             if var.get() == 1:
                 selected_computers.append(computers[i])
-
+        
         command = command_var.get()
         num = 0
         if command == "关机":
@@ -103,7 +112,7 @@ def execute_command():
             num = 3
         elif command == "远程连接":
             num = 4
-
+        # 更新配置文件中的值
         for computer in selected_computers:
             config.set(section, computer, str(num))
 

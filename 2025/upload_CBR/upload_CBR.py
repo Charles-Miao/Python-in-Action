@@ -1,4 +1,4 @@
-import pywinauto
+import pywinauto # pywinauto 是一个用于 自动化 Windows GUI 应用程序 的 Python 库，通过模拟用户操作（如点击、输入、窗口控制等），实现对桌面程序的自动化交互。
 import pandas as pd
 import time
 from pywinauto.application import Application
@@ -17,32 +17,41 @@ INFO_LOG_PATH = "info.txt"
 ERROR_LOG_PATH = "error.txt"
 # ---------------------------------------------------
 
+# 将EXCEL中的“PKID”列读出，并返回为列表
 def read_pkid_from_excel():
     df = pd.read_excel(EXCEL_FILE_PATH)
     if PKID_COLUMN_NAME not in df.columns:
         raise ValueError(f"Excel 中未找到列名：{PKID_COLUMN_NAME}")
     return df[PKID_COLUMN_NAME].tolist()
 
+# 查找指定进程名称的PID
 def get_process_id_by_name(process_name):
     for proc in psutil.process_iter(['name', 'pid']):
         if proc.info['name'] == process_name:
             return proc.info['pid']
     return None
 
+# 将信息写入日志文件
 def write_info_to_file(message):
     with open(INFO_LOG_PATH, 'a', encoding='utf-8') as f:
         f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] 信息: {message}\n")
 
+# 将错误信息写入日志文件
 def write_error_to_file(error_message):
     with open(ERROR_LOG_PATH, 'a', encoding='utf-8') as f:
         f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] 错误:\n{error_message}\n{'=' * 80}\n")
 
 def auto_submit_pkid(pkid_list):
+    # Microsoft.MDOS.SmartClient.UI.exe 是微软数字运营服务（Microsoft Digital Operations Services, MDOS）智能客户端的用户界面程序。它的正常用途主要面向微软授权翻新商 (Microsoft Authorized Refurbisher, MAR)，用于管理和激活翻新设备上的 Windows 操作系统许可证。
+    # 1. 获取数字产品密钥 (DPK)：授权翻新商通过 MDOS 智能客户端从微软获取用于激活 Windows 操作系统的数字产品密钥。
+    # 2. 管理密钥库存：帮助翻新商跟踪和管理他们拥有的数字产品密钥。
+    # 3. 注入产品密钥：在翻新计算机上安装 Windows 操作系统后，使用该工具将数字产品密钥注入到系统中，以完成激活过程。这通常是为了让最终用户在购买翻新设备后无需手动输入产品密钥。
+    # 4. 生成和提交报告：用于创建和向微软提交计算机构建报告 (Computer Build Reports, CBR)，这是翻新流程的一部分。
     app_name = 'Microsoft.MDOS.SmartClient.UI.exe'
     pid = get_process_id_by_name(app_name)
     write_info_to_file(f"尝试连接进程：{app_name}（PID: {pid if pid else '未找到'}）")
-
     try:
+        #创建了一个 Application 类的实例，并指定使用 "uia"（即 UI Automation）作为后端。pywinauto 支持多种后端，"uia" 适用于现代 Windows 应用（如 WPF、UWP），而 "win32" 适用于传统 Win32 应用。
         app = Application(backend='uia').connect(process=pid)
         write_info_to_file("成功连接到 MDOS 应用")
     except pywinauto.findwindows.ElementNotFoundError as e:
@@ -50,26 +59,30 @@ def auto_submit_pkid(pkid_list):
         return
 
     try:
+        # 定位主窗口
         main_window = app.window(title_re="Main Panel")
+        # 等待窗口可见，最多等待5秒，最小化则不可见
         main_window.wait('visible', timeout=5)
         if not main_window.exists():
+            # 如果主窗口不存在，则尝试透过类名查找，每个窗口在创建时都会被赋予一个类名
             main_window = app.window(class_name_re="Window.*")
             main_window.wait('visible', timeout=5)
         write_info_to_file("获取主窗口成功")
 
         time.sleep(2)  # 增加延迟
 
-        old_stdout = sys.stdout
-        result = StringIO()
-        sys.stdout = result
+        old_stdout = sys.stdout # 保存当前标准输出
+        result = StringIO() # 创建一个 StringIO 对象，用于捕获输出
+        sys.stdout = result # 重定向标准输出到 StringIO 对象
 
         try:
+            #打印目标窗口的控件层级结构，包括控件类型、标题、auto_id 等关键属性。
             main_window.print_control_identifiers()
         except _ctypes.COMError as com_err:
             write_error_to_file(f"打印控件标识符时 COM 错误: {str(com_err)}")
         finally:
-            sys.stdout = old_stdout
-            output = result.getvalue()
+            sys.stdout = old_stdout # 恢复标准输出
+            output = result.getvalue() # 获取 StringIO 对象中的内容
             print(output)
             write_info_to_file("控件树结构信息：\n" + output)
 
@@ -77,7 +90,7 @@ def auto_submit_pkid(pkid_list):
         write_error_to_file(traceback.format_exc())
         return
 
-
+    # 定位 KeysOperationNavigationView 窗口
     radio_indicator_floor = main_window.child_window(title="Please wait, Refreshing the dashboard.", auto_id="busyShellIndicator", control_type="ProgressBar")  #请耐心等待..数据加载中
     Keys_NavigationView_floor = radio_indicator_floor.window(class_name="KeysOperationNavigationView")
 
@@ -169,15 +182,26 @@ def start_process():
 if __name__ == '__main__':
     root = tk.Tk()
     root.title("Auto Upload CBR")
+    #geometry是Tkinter库中用于设置窗口尺寸的核心方法
     root.geometry("350x100")
-
+    # 设置1行2列的网格布局，参数 weight=1：设置列的权重比例，当窗口大小改变时：
+    # 值为0（默认）表示列不扩展
+    # 相同权重的列会平分额外空间
+    # 不同权重按比例分配空间
     root.columnconfigure(0, weight=1)
     root.columnconfigure(1, weight=1)
     root.rowconfigure(0, weight=1)
-
+    # tk.Button：创建一个按钮控件
+    # root：指定按钮的父容器为根窗口
+    # text="开始"：设置按钮显示文本为"开始"
+    # command=start_process：绑定点击事件到start_process函数
     confirm_button = tk.Button(root, text="开始", command=start_process)
+    # row=0, column=0：将按钮放置在网格布局的第0行第0列
+    # padx=20：设置左右内边距各为20像素
+    # pady=25：设置上下内边距各为25像素
+    # sticky="nsew"：控件拉伸方向（n=上, s=下, e=右, w=左），使按钮填满所在网格区域
     confirm_button.grid(row=0, column=0, padx=20, pady=25, sticky="nsew")
-
+    # 创建一个退出按钮，点击时关闭窗口
     exit_button = tk.Button(root, text="退出", command=root.destroy)
     exit_button.grid(row=0, column=1, padx=20, pady=25, sticky="nsew")
 
