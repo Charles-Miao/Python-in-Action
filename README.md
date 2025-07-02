@@ -4,9 +4,14 @@
 2025
 ---
 
-### [upload_CBR](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/upload_CBR)
-#### [Flowchart](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/upload_CBR/flowchart.md)
+### [Gitea+LFS](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/Gitea+LFS)
 
+- 项目由来：使用SVN管理测试程式变更，无法处理2GB以上的文件。故而引入自建Git服务器+LFS（Large File Storage）
+- 详细参见：[Gitea+LFS.md](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/Gitea+LFS/Gitea+LFS.md)
+
+### [upload_CBR](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/upload_CBR)
+
+- [Flowchart](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/upload_CBR/flowchart.md)
 - This was designed by David Ge, and used for uploading CBR files to server
 - pywinauto是一个用于自动化Windows GUI应用程序的Python库，通过模拟用户操作（如点击、输入、窗口控制等），实现对桌面程序的自动化交互
 - tkinter模块创建一个UI界面
@@ -24,24 +29,25 @@ sys.stdout = old_stdout # 恢复标准输出
 
 
 ### [Remote](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/remote)
-#### [Flowchart](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/remote/flowchart.md)
 
-- This was designed by David Ge, and used for remote server to execute command on agent pc and get result
+- 流程图：[Flowchart](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/remote/flowchart.md)
+- 此项目由David Ge编写, 主要用于服务器远程控制产线PC，并获取执行结果（核心就是透过文件进行服务端与客户端进行通信）
 - 服务端使用tkinter模块创建一个UI界面，并将点选的内容更新到配置档中
 - 客户端从服务端更新配置档，并执行命令
 
 ### [ExcelScheduleFilter](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/ExcelScheduleFilter)
-#### [Flowchart](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/ExcelScheduleFilter/flowchart.md)
 
+- 流程图：[Flowchart](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/ExcelScheduleFilter/flowchart.md)
+- 此项目由somebody编写，使用者发现有bug，故寻求我的帮助，解决问题的同时，也进行了学习（如何构建一个简单的UI小程序）
+- 问题和解决：第6行有部分数据不是日期格式，而是"=CF7+1"等字样，加入data_only=True解决此issue
 - tkinter创建UI界面
 - openpyxl,pandas处理excel
 - tabulate模块主要用于以表格形式格式化并打印数据
 - tkcalendar模块主要用于在tkinter图形用户界面（GUI）中添加日期选择器控件。在您的代码中，tkcalendar模块被用来创建日期选择器，使用户能够方便地选择开始日期和结束日期
-- 此脚本有bug，第6行有部分数据不是日期格式，而是"=CF7+1"等字样，后来加入data_only=True解决了这个问题
 
 ### [Zabbix_Agent](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/Zabbix_Agent)
-#### [Flowchart](https://github.com/Charles-Miao/Python-in-Action/blob/master/2025/Zabbix_Agent/flowchart.md)
 
+- 流程图：[Flowchart](https://github.com/Charles-Miao/Python-in-Action/blob/master/2025/Zabbix_Agent/flowchart.md)
 - 使用[syncFileServer](https://github.com/Charles-Miao/Batch-in-Action/tree/master/2025/SyncFileServer)中的批处理脚本，同步文件服务器上的文件到备份服务器
 - 使用[Zabbix_Agent](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/Zabbix_Agent)中的python脚本和Zabbix工具，监控同步结果
 - IT监控平台Zabbix添加Sync Files模板，此模板添加了一个Sync Files监控项，以及一个触发器（同步失败则触发）
