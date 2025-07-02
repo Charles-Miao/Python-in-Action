@@ -6,21 +6,16 @@
 
 ### [upload_CBR](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/upload_CBR)
 
-- [Flowchart](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/upload_CBR/flowchart.md)
-- This was designed by David Ge, and used for uploading CBR files to server
-- pywinauto是一个用于自动化Windows GUI应用程序的Python库，通过模拟用户操作（如点击、输入、窗口控制等），实现对桌面程序的自动化交互
+- 流程图：[Flowchart](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/upload_CBR/flowchart.md)
+- 此项目由David Ge编写，主要用于上传CBR，类似RPA的操作
 - tkinter模块创建一个UI界面
-- traceback用途？
-- StringIO用途？
-- _ctypes用途？
-- 各层级class_name，auto_id，title怎么获取到的？
-- 标准输出重定向用途？
-```python
-old_stdout = sys.stdout # 保存当前标准输出
-result = StringIO() # 创建一个 StringIO 对象，用于捕获输出
-sys.stdout = result # 重定向标准输出到 StringIO 对象
-sys.stdout = old_stdout # 恢复标准输出
-```
+- traceback用于记录log
+- ~~StringIO（**后续升级代码已经删除此模块**）是内存中的文本缓冲区，允许你像操作文件一样操作字符串。其核心用途是模拟文件对象，但数据仅存储在内存中（不写入磁盘），常用于临时数据处理、测试或重定向输出流~~
+- ~~_ctypes（**后续升级代码已经删除此模块**）是 Python 与 C 语言交互的底层机制，主要用于调用动态链接库和执行系统级操作。但在实际开发中，应优先使用 ctypes 模块或其他更高层的工具（如 Cython），以避免兼容性和安全性问题。只有在特殊需求（如调试、性能优化）下才考虑直接使用 _ctypes~~
+- 应用程序中的元素属性（各层级class_name，auto_id，title等）透过Accessibility Insights for Windows（**核心功能**）获取
+- pywinauto（**核心功能**）是一个用于自动化Windows GUI应用程序的Python库，通过模拟用户操作（如点击、输入、窗口控制等），实现对桌面程序的自动化交互
+- 参考资料：[解放双手, python自动化操作电脑端微信](https://www.cnblogs.com/sherlock-V/articles/17065664.html)
+- 官网说明：[Accessibility Insights for Windows](https://accessibilityinsights.io/docs/windows/overview/)
 
 
 ### [Remote](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/remote)

@@ -70,7 +70,8 @@ def auto_submit_pkid(pkid_list):
         write_info_to_file("获取主窗口成功")
 
         time.sleep(2)  # 增加延迟
-
+        
+        #标准输出重定向用途：临时将输出内容捕获到内存中，而不是显示在终端或控制台
         old_stdout = sys.stdout # 保存当前标准输出
         result = StringIO() # 创建一个 StringIO 对象，用于捕获输出
         sys.stdout = result # 重定向标准输出到 StringIO 对象
