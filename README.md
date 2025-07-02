@@ -4,11 +4,6 @@
 2025
 ---
 
-### [Gitea+LFS](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/Gitea+LFS)
-
-- 项目由来：使用SVN管理测试程式变更，无法处理2GB以上的文件。故而引入自建Git服务器+LFS（Large File Storage）
-- 详细参见：[Gitea+LFS.md](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/Gitea+LFS/Gitea+LFS.md)
-
 ### [upload_CBR](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/upload_CBR)
 
 - [Flowchart](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/upload_CBR/flowchart.md)
@@ -44,17 +39,6 @@ sys.stdout = old_stdout # 恢复标准输出
 - openpyxl,pandas处理excel
 - tabulate模块主要用于以表格形式格式化并打印数据
 - tkcalendar模块主要用于在tkinter图形用户界面（GUI）中添加日期选择器控件。在您的代码中，tkcalendar模块被用来创建日期选择器，使用户能够方便地选择开始日期和结束日期
-
-### [Zabbix_Agent](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/Zabbix_Agent)
-
-- 流程图：[Flowchart](https://github.com/Charles-Miao/Python-in-Action/blob/master/2025/Zabbix_Agent/flowchart.md)
-- 使用[syncFileServer](https://github.com/Charles-Miao/Batch-in-Action/tree/master/2025/SyncFileServer)中的批处理脚本，同步文件服务器上的文件到备份服务器
-- 使用[Zabbix_Agent](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/Zabbix_Agent)中的python脚本和Zabbix工具，监控同步结果
-- IT监控平台Zabbix添加Sync Files模板，此模板添加了一个Sync Files监控项，以及一个触发器（同步失败则触发）
-- 主机添加Sync Files模板
-- IT维护Email媒介：SMTP服务器和发送邮件的电子邮件
-- IT添加SWDL群组和用户，并添加Email报警媒介
-- 添加一个触发器动作，当文件同步异常时透过Email发送给SWDL群组
 
 2024
 ---
