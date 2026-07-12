@@ -1,40 +1,6 @@
 简单Python脚本收集
 ===
 
-2025
----
-
-### [upload_CBR](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/upload_CBR)
-
-- 流程图：[Flowchart](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/upload_CBR/flowchart.md)
-- 此项目由David Ge编写，主要用于上传CBR，类似RPA的操作
-- tkinter模块创建一个UI界面
-- traceback用于记录log
-- ~~StringIO（**后续升级代码已经删除此模块**）是内存中的文本缓冲区，允许你像操作文件一样操作字符串。其核心用途是模拟文件对象，但数据仅存储在内存中（不写入磁盘），常用于临时数据处理、测试或重定向输出流~~
-- ~~_ctypes（**后续升级代码已经删除此模块**）是 Python 与 C 语言交互的底层机制，主要用于调用动态链接库和执行系统级操作。但在实际开发中，应优先使用 ctypes 模块或其他更高层的工具（如 Cython），以避免兼容性和安全性问题。只有在特殊需求（如调试、性能优化）下才考虑直接使用 _ctypes~~
-- 应用程序中的元素属性（各层级class_name，auto_id，title等）透过Accessibility Insights for Windows（**核心功能**）获取
-- pywinauto（**核心功能**）是一个用于自动化Windows GUI应用程序的Python库，通过模拟用户操作（如点击、输入、窗口控制等），实现对桌面程序的自动化交互
-- 参考资料：[解放双手, python自动化操作电脑端微信](https://www.cnblogs.com/sherlock-V/articles/17065664.html)
-- 官网说明：[Accessibility Insights for Windows](https://accessibilityinsights.io/docs/windows/overview/)
-
-
-### [Remote](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/remote)
-
-- 流程图：[Flowchart](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/remote/flowchart.md)
-- 此项目由David Ge编写, 主要用于服务器远程控制产线PC，并获取执行结果（核心就是透过文件进行服务端与客户端进行通信）
-- 服务端使用tkinter模块创建一个UI界面，并将点选的内容更新到配置档中
-- 客户端从服务端更新配置档，并执行命令
-
-### [ExcelScheduleFilter](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/ExcelScheduleFilter)
-
-- 流程图：[Flowchart](https://github.com/Charles-Miao/Python-in-Action/tree/master/2025/ExcelScheduleFilter/flowchart.md)
-- 此项目由somebody编写，使用者发现有bug，故寻求我的帮助，解决问题的同时，也进行了学习（如何构建一个简单的UI小程序）
-- 问题和解决：第6行有部分数据不是日期格式，而是"=CF7+1"等字样，加入data_only=True解决此issue
-- tkinter创建UI界面
-- openpyxl,pandas处理excel
-- tabulate模块主要用于以表格形式格式化并打印数据
-- tkcalendar模块主要用于在tkinter图形用户界面（GUI）中添加日期选择器控件。在您的代码中，tkcalendar模块被用来创建日期选择器，使用户能够方便地选择开始日期和结束日期
-
 2024
 ---
 
